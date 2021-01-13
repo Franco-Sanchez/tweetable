@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :tweets, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :username, :email, presence: true, uniqueness: true
   validates :email, format: { with: /\A\w+@\w+\.\w{2,3}\z/,
