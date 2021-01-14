@@ -1,0 +1,44 @@
+<section>
+  <h1>Home</h1>
+  <div>
+    <% if current_user  %>
+      <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('profile_default.svg') %>
+      <%= form_with model: @tweet, local: true do |f| %>
+        <% if @tweet.errors.any? %>
+          <ul>
+            <% @tweet.errors.full_messages.each do |msg| %>
+              <li>
+                <%= msg %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= f.text_area :body, placeholder: 'Remember to thing before write...' %>
+        <%= f.submit 'Tweet' %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+<section>
+  <% @tweets.each do |tweet| %>
+    <article>
+      <%= tweet.user.avatar.attached? ? image_tag(tweet.user.avatar) : image_tag('profile_default.svg') %>
+      <div>
+        <%= tweet.user.name %>
+        <%= tweet.user.username %>
+        <%= time_ago_in_words(tweet.created_at) %>
+        <p><%= tweet.body %></p>
+        <footer>
+          <div>
+            <%= link_to image_tag('comments.svg'), tweet_path(tweet) %>
+            <%= tweet.comments_count %>
+          </div>
+          <div>
+            <%= link_to image_tag('delete.svg'), tweet_path(tweet), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to image_tag('edit.svg'), edit_tweet_path(tweet) %>
+          </div>
+        </footer>
+      </div>
+    </article>
+  <% end %>
+</section>

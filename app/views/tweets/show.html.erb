@@ -1,0 +1,42 @@
+<section>
+  <h1>Tuit Detail</h1>
+  <article>
+    <%= @tweet.user.avatar.attached? ? image_tag(@tweet.user.avatar) : image_tag('profile_default.svg') %>
+    <div>
+      <%= @tweet.user.name %>
+      <%= @tweet.user.username %>
+      <%= time_ago_in_words(@tweet.created_at) %>
+      <p><%= @tweet.body %></p>
+      <footer>
+        <%= image_tag('comments.svg') %>
+        <%= @tweet.comments_count %>
+      </footer>
+    </div>
+  </article>
+</section>
+<section>
+  <div>
+    <% if current_user  %>
+      <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('profile_default.svg') %>
+      <%= form_with model: [@tweet, @comment], local: true do |f| %>
+        <%= f.text_area :body, placeholder: 'Remember to thing before write...' %>
+        <%= f.submit 'Comment' %>
+      <% end %>
+    <% end %>
+  </div>
+  <% @tweet.comments.each do |comment| %>
+    <article>
+      <%= comment.user.avatar.attached? ? image_tag(comment.user.avatar) : image_tag('profile_default.svg') %>
+      <div>
+        <%= comment.user.name %>
+        <%= comment.user.username %>
+        <%= time_ago_in_words(comment.created_at) %>
+        <p><%= comment.body %></p>
+        <footer>
+          <%= link_to image_tag('delete.svg'), tweet_comment_path(@tweet, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to image_tag('edit.svg'), edit_tweet_comment_path(@tweet, comment) %>
+        </footer>
+      </div>
+    </article>
+  <% end %>
+</section>
