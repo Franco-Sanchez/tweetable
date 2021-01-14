@@ -32,10 +32,12 @@
         <%= comment.user.username %>
         <%= time_ago_in_words(comment.created_at) %>
         <p><%= comment.body %></p>
-        <footer>
+        <% if policy(comment).update? %>
+          <footer>
           <%= link_to image_tag('delete.svg'), tweet_comment_path(@tweet, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
           <%= link_to image_tag('edit.svg'), edit_tweet_comment_path(@tweet, comment) %>
         </footer>
+        <% end %>
       </div>
     </article>
   <% end %>

@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @tweet.comments.new(comment_params)
     @comment.user = current_user
+    authorize @comment
     if @comment.save
       redirect_to @tweet
     else
@@ -14,10 +15,13 @@ class CommentsController < ApplicationController
   end
 
   # GET /tweets/:tweet_id/comments/:id/edit
-  def edit; end
+  def edit
+    authorize @comment
+  end
 
   # PATCH /tweets/:tweet_id/comments/:id
   def update
+    authorize @comment
     if @comment.update(comment_params)
       redirect_to @tweet
     else
@@ -27,6 +31,7 @@ class CommentsController < ApplicationController
 
   # DELETE /tweets/:tweet_id/comments/:id
   def destroy
+    authorize @comment
     @comment.destroy
     redirect_to @tweet
   end

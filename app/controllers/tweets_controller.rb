@@ -17,20 +17,24 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
+    authorize @tweet
     if @tweet.save
-      redirect_to @tweet
+      redirect_to root_path
     else
       render 'index'
     end
   end
 
   # GET /tweets/:id/edit
-  def edit; end
+  def edit
+    authorize @tweet
+  end
 
   # PATCH /tweets/:id
   def update
+    authorize @tweet
     if @tweet.update(tweet_params)
-      redirect_to @tweet
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -38,6 +42,7 @@ class TweetsController < ApplicationController
 
   # DELETE /tweets/:id
   def destroy
+    authorize @tweet
     @tweet.destroy
     redirect_to root_path
   end

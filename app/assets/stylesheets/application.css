@@ -22,6 +22,7 @@
  body {
    max-width: 1366px;
    margin: 0 auto;
+   background: #E5E5E5;
  }
 
  .logo img {
