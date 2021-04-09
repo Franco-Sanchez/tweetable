@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.sort_by(&:created_at).reverse
     @tweet = Tweet.new
   end
 
@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
   def update
     authorize @tweet
     if @tweet.update(tweet_params)
-      redirect_to root_path
+      redirect_to @tweet
     else
       render 'edit'
     end

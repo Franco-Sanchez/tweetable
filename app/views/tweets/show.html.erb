@@ -19,12 +19,17 @@
     <% if current_user  %>
       <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('profile_default.svg') %>
       <%= form_with model: [@tweet, @comment], local: true do |f| %>
+        <% flash.each do |type, msg| %>
+          <div>
+            <%= msg %>
+          </div>
+        <% end %> 
         <%= f.text_area :body, placeholder: 'Remember to thing before write...' %>
         <%= f.submit 'Comment' %>
       <% end %>
     <% end %>
   </div>
-  <% @tweet.comments.each do |comment| %>
+  <% @tweet.comments.sort_by(&:created_at).reverse.each do |comment| %>
     <article>
       <%= comment.user.avatar.attached? ? image_tag(comment.user.avatar) : image_tag('profile_default.svg') %>
       <div>

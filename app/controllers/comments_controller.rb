@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @tweet
     else
-      render 'tweets/show'
+      # render 'tweets/show'
+      redirect_to @tweet, alert: "Body can't be blank and should be at most 140 characters long."
     end
   end
 
