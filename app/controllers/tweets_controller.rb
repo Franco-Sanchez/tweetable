@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/:id
   def show
+    @comments = @tweet.comments
     @comment = Comment.new
   end
 
