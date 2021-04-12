@@ -1,44 +1,43 @@
-<h2>Sign up</h2>
+<h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white">Sign up</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="flex justify-center border border-solid border-gray-300 bg-white pt-6 pb-4">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'flex flex-col items-center gap-y-2 w-64' }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :email, class: 'text-sm' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :username, class: 'text-sm' %><br />
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :name, class: 'text-sm' %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name",class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :avatar %><span> (opcional)</span><br />
-    <%= f.file_field :avatar %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :avatar, class: 'text-sm' %><span class="text-sm"> (opcional)</span><br />
+      <%= f.file_field :avatar, class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :password, class: 'text-sm' %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field w-full">
+      <%= f.label :password_confirmation, class: 'text-sm' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: 'border border-solid border-gray-600 rounded-lg w-full h-9 py-2 px-4' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Submit", class: 'bg-blue-600 rounded-xl py-2 px-4 text-white cursor-pointer' %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+  <% end %>
+</div>

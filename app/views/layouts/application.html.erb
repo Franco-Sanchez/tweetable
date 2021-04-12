@@ -6,19 +6,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <header>
+    <div class="w-5/12 my-0 mx-auto py-2.5 min-h-screen">
+      <header class="flex justify-between items-center mb-3">
         <%= link_to image_tag('twitter.png'), root_path, class: 'logo' %>
         <% if current_user %>
-          <%= link_to 'Edit Profile', edit_user_registration_path %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          <div>
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: 'text-blue-600' %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'border border-solid border-blue-600 rounded-xl text-blue-600 py-1 px-3 ml-2' %>
+          </div>
         <% else %>
-          <%= link_to 'Login', new_user_session_path %>
+          <%= link_to 'Login', new_user_session_path, class: 'border border-solid border-blue-600 rounded-xl text-blue-600 py-1 px-3' %>
         <% end %>
       </header>
       <main>

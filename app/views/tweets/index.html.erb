@@ -1,9 +1,9 @@
 <section>
-  <h1>Home</h1>
+  <h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white" >Home</h1>
   <div>
     <% if current_user  %>
       <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('profile_default.svg') %>
-      <%= form_with model: @tweet, local: true do |f| %>
+      <%= form_with model: @tweet, local: true, class: '' do |f| %>
         <% if @tweet.errors.any? %>
           <ul>
             <% @tweet.errors.full_messages.each do |msg| %>
