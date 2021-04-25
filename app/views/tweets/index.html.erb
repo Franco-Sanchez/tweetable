@@ -1,9 +1,9 @@
 <section>
   <h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white" >Home</h1>
-  <div>
+  <div class="flex gap-2 py-2 px-4 bg-white border-r border-b border-l border-solid border-gray-300">
     <% if current_user  %>
-      <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('profile_default.svg') %>
-      <%= form_with model: @tweet, local: true, class: '' do |f| %>
+      <%= current_user.avatar.attached? ? image_tag(current_user.avatar, class: 'rounded-full h-full') : image_tag('profile_default.svg', class: 'rounded-full h-full') %>
+      <%= form_with model: @tweet, local: true, class: 'flex flex-col w-full gap-2' do |f| %>
         <% if @tweet.errors.any? %>
           <ul>
             <% @tweet.errors.full_messages.each do |msg| %>
@@ -13,8 +13,8 @@
             <% end %>
           </ul>
         <% end %>
-        <%= f.text_area :body, placeholder: 'Remember to thing before write...' %>
-        <%= f.submit 'Tweet' %>
+        <%= f.text_area :body, placeholder: 'Remember to think before write...', class: 'p-1.5 resize-none' %>
+        <%= f.submit 'Tweet', class: 'bg-blue-600 rounded-xl py-2 px-4 text-white cursor-pointer self-end' %>
       <% end %>
     <% end %>
   </div>

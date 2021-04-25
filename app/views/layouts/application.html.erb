@@ -13,7 +13,7 @@
   <body>
     <div class="w-5/12 my-0 mx-auto py-2.5 min-h-screen">
       <header class="flex justify-between items-center mb-3">
-        <%= link_to image_tag('twitter.png'), root_path, class: 'logo' %>
+        <%= link_to image_tag('twitter.png', class: 'w-12'), root_path %>
         <% if current_user %>
           <div>
             <%= link_to 'Edit Profile', edit_user_registration_path, class: 'text-blue-600' %>

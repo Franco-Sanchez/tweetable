@@ -23,11 +23,11 @@
  }
  
  body {
-   max-width: 1366px;
+   max-width: 1440px;
    margin: 0 auto;
    background: #E5E5E5;
  }
  
- .logo img {
+ /* .logo img {
    width: 50px;
- }
+ } */
