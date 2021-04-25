@@ -5,15 +5,15 @@
       <%= current_user.avatar.attached? ? image_tag(current_user.avatar, class: 'rounded-full h-full') : image_tag('profile_default.svg', class: 'rounded-full h-full') %>
       <%= form_with model: @tweet, local: true, class: 'flex flex-col w-full gap-2' do |f| %>
         <% if @tweet.errors.any? %>
-          <ul>
+          <ul class="px-1.5">
             <% @tweet.errors.full_messages.each do |msg| %>
-              <li>
+              <li class="text-red-600 text-sm">
                 <%= msg %>
               </li>
             <% end %>
           </ul>
         <% end %>
-        <%= f.text_area :body, placeholder: 'Remember to think before write...', class: 'p-1.5 resize-none' %>
+        <%= f.text_area :body, placeholder: 'Remember to think before write...', class: 'w-full p-1.5 resize-none' %>
         <%= f.submit 'Tweet', class: 'bg-skyblue-500 rounded-3xl py-2 px-4 text-white cursor-pointer self-end' %>
       <% end %>
     </div>
