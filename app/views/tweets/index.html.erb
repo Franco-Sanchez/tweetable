@@ -1,5 +1,5 @@
 <section>
-  <h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white" >Home</h1>
+  <h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white">Home</h1>
   <% if current_user  %>
     <div class="flex gap-2 py-2 px-4 bg-white border-r border-b border-l border-solid border-gray-300 mb-3">
       <%= current_user.avatar.attached? ? image_tag(current_user.avatar, class: 'rounded-full h-full') : image_tag('profile_default.svg', class: 'rounded-full h-full') %>
