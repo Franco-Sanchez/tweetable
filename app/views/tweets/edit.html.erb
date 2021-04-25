@@ -1,5 +1,6 @@
-<h1>Edit Tweet</h1>
-<%= form_with model: @tweet, local: true do |f| %>
+<h1 class="border border-solid border-gray-300 py-4 text-center text-xl font-bold bg-white">Edit Tweet</h1>
+<div class="flex justify-center border border-solid border-gray-300 bg-white pt-6 pb-4">
+<%= form_with model: @tweet, local: true, class: 'flex flex-col gap-2 w-64' do |f| %>
   <% if @tweet.errors.any? %>
     <ul>
       <% @tweet.errors.full_messages.each do |msg| %>
@@ -9,7 +10,10 @@
       <% end %>
     </ul>
   <% end %>
-  <%= f.label :body %><br />
-  <%= f.text_area :body %><br />
-  <%= f.submit 'Edit' %>
+  <div class="w-full">
+    <%= f.label :body, class: 'text-sm' %><br />
+    <%= f.text_area :body, class: 'border border-solid border-gray-600 rounded-lg w-full py-2 px-4 resize-none' %>
+  </div>
+  <%= f.submit 'Edit', class: 'bg-skyblue-500 rounded-3xl py-2 px-4 text-white cursor-pointer self-center' %>
 <% end %>
+</div>
